@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithms & Pseudocode</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary" href="index.html">
+                <i class="fas fa-cubes me-2"></i>DS Navigator
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="algorithms.html">Algorithms</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pseudocode.html">Pseudocode</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="data_structures.html">Python DS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container py-5">
+        <h1 class="text-center mb-5 display-4 fw-bold text-primary">10 Core Algorithms & Pseudocode</h1>
+        <p class="text-center lead mb-5">Each card contains the formal algorithm steps, language-agnostic pseudocode, and a working Python implementation.</p>
+
+        <div class="card mb-4 shadow-lg border-0 algorithm-card">
+            <div class="card-header bg-dark text-white fw-bold h4">
+                <i class="fas fa-search me-2"></i>1. Linear Search
+            </div>
+            <div class="card-body">
+                <h5 class="card-title text-success">Description</h5>
+                <p>A sequential search algorithm that checks every element in a list until a match is found or the entire list is exhausted. Simple but inefficient for large datasets.</p>
+                
+                <h5 class="card-title text-success mt-3">Step-by-step Algorithm</h5>
+                <ol class="list-group list-group-numbered">
+                    <li class="list-group-item">Start from the first element of the list (index $i=0$).</li>
+                    <li class="list-group-item">Compare the current element $A[i]$ with the target value $T$.</li>
+                    <li class="list-group-item">If $A[i] = T$, return the index $i$ and terminate the search.</li>
+                    <li class="list-group-item">Increment $i$ to check the next element.</li>
+                    <li class="list-group-item">If the end of the list is reached ($i > length(A)$) and no match is found, return $-1$.</li>
+                </ol>
+
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <h5 class="card-title text-success">Pseudocode</h5>
+                        <pre class="bg-light p-3 rounded code-block"><code>FUNCTION LinearSearch(Array, Target):
+    FOR i FROM 0 TO length(Array) - 1:
+        IF Array[i] EQUALS Target:
+            RETURN i
+    RETURN -1</code></pre>
+                    </div>
+                    <div class="col-md-6">
+                        <h5 class="card-title text-success">Python Sample Code</h5>
+                        <pre class="bg-light p-3 rounded code-block"><code>def linear_search(arr, target):
+    for i in range(len(arr)):
+        if arr[i] == target:
+            return i
+    return -1
+
+# Example:
+data = [10, 5, 8, 12, 3]
+print(f"Index of 8: {linear_search(data, 8)}") 
+# Output: Index of 8: 2</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card mb-4 shadow-lg border-0 algorithm-card">
+            <div class="card-header bg-dark text-white fw-bold h4">
+                <i class="fas fa-search-plus me-2"></i>2. Binary Search (Requires Sorted Array)
+            </div>
+            <div class="card-body">
+                <h5 class="card-title text-success">Description</h5>
+                <p>An efficient search algorithm for **sorted** arrays. It repeatedly divides the search interval in half, eliminating half of the elements in each step (Divide and Conquer). 
+
+[Image of Binary Search Diagram]
+</p>
+                
+                <h5 class="card-title text-success mt-3">Step-by-step Algorithm</h5>
+                <ol class="list-group list-group-numbered">
+                    <li class="list-group-item">Initialize $low$ to $0$ and $high$ to $length(A) - 1$.</li>
+                    <li class="list-group-item">While $low \le high$: calculate $mid = \lfloor (low + high) / 2 \rfloor$.</li>
+                    <li class="list-group-item">If $A[mid]$ equals $T$, return $mid$.</li>
+                    <li class="list-group-item">If $A[mid]$ is less than $T$, set $low = mid + 1$ (search the right half).</li>
+                    <li class="list-group-item">Else ($A[mid]$ is greater than $T$), set $high = mid - 1$ (search the left half).</li>
+                    <li class="list-group-item">If the loop terminates, return $-1$.</li>
+                </ol>
+
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <h5 class="card-title text-success">Pseudocode</h5>
+                        <pre class="bg-light p-3 rounded code-block"><code>FUNCTION BinarySearch(Array, Target):
+    low = 0
+    high = length(Array) - 1
+    WHILE low <= high:
+        mid = (low + high) // 2
+        IF Array[mid] EQUALS Target:
+            RETURN mid
+        ELSE IF Array[mid] < Target:
+            low = mid + 1
+        ELSE:
+            high = mid - 1
+    RETURN -1</code></pre>
+                    </div>
+                    <div class="col-md-6">
+                        <h5 class="card-title text-success">Python Sample Code</h5>
+                        <pre class="bg-light p-3 rounded code-block"><code>def binary_search(arr, target):
+    low, high = 0, len(arr) - 1
+    while low <= high:
+        mid = (low + high) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return -1
+
+# Example (must be sorted):
+data = [3, 5, 8, 10, 12]
+print(f"Index of 10: {binary_search(data, 10)}") 
+# Output: Index of 10: 3</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card mb-4 shadow-lg border-0 algorithm-card">
+            <div class="card-header bg-dark text-white fw-bold h4"><i class="fas fa-sort me-2"></i>3. Bubble Sort</div>
+            <div class="card-body">
+                <h5 class="card-title text-success">Description</h5>
+                <p>A simple sorting algorithm that repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order. The pass-through process is repeated until no swaps are needed. </p>
+                <h5 class="card-title text-success mt-3">Step-by-step Algorithm</h5>
+                <ol class="list-group list-group-numbered">
+                    <li class="list-group-item">Set a flag, $swapped$, to true.</li>
+                    <li class="list-group-item">Repeat while $swapped$ is true: set $swapped$ to false.</li>
+                    <li class="list-group-item">Iterate through the array from the first element up to $n-i-1$.</li>
+                    <li class="list-group-item">If $A[j] > A[j+1]$, swap $A[j]$ and $A[j+1]$, and set $swapped$ to true.</li>
+                    <li class="list-group-item">The largest unsorted element "bubbles up" to its correct position in each pass.</li>
+                </ol>
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <h5 class="card-title text-success">Pseudocode</h5>
+                        <pre class="bg-light p-3 rounded code-block"><code>PROCEDURE BubbleSort(A):
+    n = length(A)
+    FOR i FROM 0 TO n-2:
+        FOR j FROM 0 TO n-i-2:
+            IF A[j] > A[j+1]:
+                Swap A[j] and A[j+1]</code></pre>
+                    </div>
+                    <div class="col-md-6">
+                        <h5 class="card-title text-success">Python Sample Code</h5>
+                        <pre class="bg-light p-3 rounded code-block"><code>def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n - i - 1):
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+
+# Example:
+data = [64, 34, 25, 12, 22]
+bubble_sort(data)
+print(f"Sorted array: {data}")
+# Output: Sorted array: [12, 22, 25, 34, 64]</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-4 shadow-lg border-0 algorithm-card">
+            <div class="card-header bg-dark text-white fw-bold h4"><i class="fas fa-list-ol me-2"></i>4. Selection Sort</div>
+            <div class="card-body">
+                <h5 class="card-title text-success">Description</h5>
+                <p>A sorting algorithm that divides the input list into two parts: a sorted sublist and the remaining unsorted sublist. It repeatedly selects the smallest element from the unsorted sublist and moves it to the sorted sublist.</p>
+                <h5 class="card-title text-success mt-3">Step-by-step Algorithm</h5>
+                <ol class="list-group list-group-numbered">
+                    <li class="list-group-item">Iterate from $i = 0$ to $n-2$ (where $n$ is length).</li>
+                    <li class="list-group-item">Assume the element at index $i$ is the minimum (min\_idx = $i$).</li>
+                    <li class="list-group-item">Iterate from $j = i+1$ to $n-1$ to find the true minimum element's index in the unsorted portion.</li>
+                    <li class="list-group-item">If $A[j] < A[min\_idx]$, update $min\_idx = j$.</li>
+                    <li class="list-group-item">Swap the minimum element found at $min\_idx$ with the element at index $i$.</li>
+                </ol>
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <h5 class="card-title text-success">Pseudocode</h5>
+                        <pre class="bg-light p-3 rounded code-block"><code>PROCEDURE SelectionSort(A):
+    n = length(A)
+    FOR i FROM 0 TO n-2:
+        min_idx = i
+        FOR j FROM i+1 TO n-1:
+            IF A[j] < A[min_idx]:
+                min_idx = j
+        Swap A[i] and A[min_idx]</code></pre>
+                    </div>
+                    <div class="col-md-6">
+                        <h5 class="card-title text-success">Python Sample Code</h5>
+                        <pre class="bg-light p-3 rounded code-block"><code>def selection_sort(arr):
+    n = len(arr)
+    for i in range(n - 1):
+        min_idx = i
+        for j in range(i + 1, n):
+            if arr[j] < arr[min_idx]:
+                min_idx = j
+        arr[i], arr[min_idx] = arr[min_idx], arr[i] # Swap
+
+# Example:
+data = [64, 25, 12, 22, 11]
+selection_sort(data)
+print(f"Sorted array: {data}")
+# Output: Sorted array: [11, 12, 22, 25, 64]</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-4 shadow-lg border-0 algorithm-card">
+            <div class="card-header bg-dark text-white fw-bold h4"><i class="fas fa-arrow-down-short-wide me-2"></i>5. Insertion Sort</div>
+            <div class="card-body">
+                <h5 class="card-title text-success">Description</h5>
+                <p>Builds the final sorted array one item at a time. It iterates, taking elements from the input data and inserting them into the correct position in the already sorted part of the array.</p>
+                <h5 class="card-title text-success mt-3">Step-by-step Algorithm</h5>
+                <ol class="list-group list-group-numbered">
+                    <li class="list-group-item">Iterate from the second element $i = 1$ to $n-1$.</li>
+                    <li class="list-group-item">Store the current element $A[i]$ as $key$.</li>
+                    <li class="list-group-item">Initialize $j = i - 1$ (the last element of the sorted part).</li>
+                    <li class="list-group-item">While $j \ge 0$ AND $A[j] > key$: shift $A[j]$ one position right ($A[j+1] = A[j]$), and decrement $j$.</li>
+                    <li class="list-group-item">Insert $key$ into the correct position: $A[j+1] = key$.</li>
+                </ol>
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <h5 class="card-title text-success">Pseudocode</h5>
+                        <pre class="bg-light p-3 rounded code-block"><code>PROCEDURE InsertionSort(A):
+    n = length(A)
+    FOR i FROM 1 TO n-1:
+        key = A[i]
+        j = i - 1
+        WHILE j >= 0 AND A[j] > key:
+            A[j+1] = A[j]
+            j = j - 1
+        A[j+1] = key</code></pre>
+                    </div>
+                    <div class="col-md-6">
+                        <h5 class="card-title text-success">Python Sample Code</h5>
+                        <pre class="bg-light p-3 rounded code-block"><code>def insertion_sort(arr):
+    for i in range(1, len(arr)):
+        key = arr[i]
+        j = i - 1
+        while j >= 0 and key < arr[j]:
+            arr[j + 1] = arr[j]
+            j -= 1
+        arr[j + 1] = key
+
+# Example:
+data = [12, 11, 13, 5, 6]
+insertion_sort(data)
+print(f"Sorted array: {data}")
+# Output: Sorted array: [5, 6, 11, 12, 13]</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card mb-4 shadow-lg border-0 algorithm-card">
+            <div class="card-header bg-dark text-white fw-bold h4"><i class="fas fa-calculator me-2"></i>6. Factorial (Iterative)</div>
+            <div class="card-body">
+                <h5 class="card-title text-success">Description</h5>
+                <p>Calculates the factorial of a non-negative integer $n$ (denoted $n!$). It is the product of all positive integers less than or equal to $n$. Uses an iterative (looping) approach.</p>
+                <h5 class="card-title text-success mt-3">Step-by-step Algorithm</h5>
+                <ol class="list-group list-group-numbered">
+                    <li class="list-group-item">If $n < 0$, return error. If $n = 0$, return 1.</li>
+                    <li class="list-group-item">Initialize $result = 1$.</li>
+                    <li class="list-group-item">Iterate from $i = 1$ to $n$.</li>
+                    <li class="list-group-item">In each iteration, update $result = result \times i$.</li>
+                    <li class="list-group-item">Return $result$.</li>
+                </ol>
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <h5 class="card-title text-success">Pseudocode</h5>
+                        <pre class="bg-light p-3 rounded code-block"><code>FUNCTION IterativeFactorial(n):
+    IF n < 0: RETURN Error
+    IF n = 0: RETURN 1
+    result = 1
+    FOR i FROM 1 TO n:
+        result = result * i
+    RETURN result</code></pre>
+                    </div>
+                    <div class="col-md-6">
+                        <h5 class="card-title text-success">Python Sample Code</h5>
+                        <pre class="bg-light p-3 rounded code-block"><code>def iterative_factorial(n):
+    if n < 0: return "Error"
+    if n == 0: return 1
+    result = 1
+    for i in range(1, n + 1):
+        result *= i
+    return result
+
+# Example:
+print(f"Factorial of 5: {iterative_factorial(5)}")
+# Output: Factorial of 5: 120 (5*4*3*2*1)</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card mb-4 shadow-lg border-0 algorithm-card">
+            <div class="card-header bg-dark text-white fw-bold h4"><i class="fas fa-infinity me-2"></i>7. Fibonacci Sequence (Recursive)</div>
+            <div class="card-body">
+                <h5 class="card-title text-success">Description</h5>
+                <p>A sequence where each number is the sum of the two preceding ones, usually starting with 0 and 1. This uses a recursive approach, which is simple but computationally expensive. </p>
+                <h5 class="card-title text-success mt-3">Step-by-step Algorithm</h5>
+                <ol class="list-group list-group-numbered">
+                    <li class="list-group-item">Define the base cases: If $n = 0$, return $0$. If $n = 1$, return $1$.</li>
+                    <li class="list-group-item">For $n > 1$, the function recursively calls itself: $Fib(n) = Fib(n-1) + Fib(n-2)$.</li>
+                    <li class="list-group-item">The calculation continues until the base cases are reached.</li>
+                </ol>
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <h5 class="card-title text-success">Pseudocode</h5>
+                        <pre class="bg-light p-3 rounded code-block"><code>FUNCTION RecursiveFib(n):
+    IF n = 0:
+        RETURN 0
+    ELSE IF n = 1:
+        RETURN 1
+    ELSE:
+        RETURN RecursiveFib(n-1) + RecursiveFib(n-2)</code></pre>
+                    </div>
+                    <div class="col-md-6">
+                        <h5 class="card-title text-success">Python Sample Code</h5>
+                        <pre class="bg-light p-3 rounded code-block"><code>def recursive_fib(n):
+    if n <= 0: return 0
+    if n == 1: return 1
+    return recursive_fib(n - 1) + recursive_fib(n - 2)
+
+# Example:
+print(f"Fibonacci of 6: {recursive_fib(6)}") 
+# Output: Fibonacci of 6: 8 (0, 1, 1, 2, 3, 5, 8)</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-4 shadow-lg border-0 algorithm-card">
+            <div class="card-header bg-dark text-white fw-bold h4"><i class="fas fa-divide me-2"></i>8. Greatest Common Divisor (GCD)</div>
+            <div class="card-body">
+                <h5 class="card-title text-success">Description</h5>
+                <p>Calculates the largest positive integer that divides two or more integers without leaving a remainder, using the efficient Euclidean Algorithm.</p>
+                <h5 class="card-title text-success mt-3">Step-by-step Algorithm</h5>
+                <ol class="list-group list-group-numbered">
+                    <li class="list-group-item">Let $a$ and $b$ be the two numbers.</li>
+                    <li class="list-group-item">While $b \neq 0$:</li>
+                    <li class="list-group-item">Calculate the remainder $r = a \pmod b$.</li>
+                    <li class="list-group-item">Set $a = b$.</li>
+                    <li class="list-group-item">Set $b = r$.</li>
+                    <li class="list-group-item">When $b$ becomes $0$, $a$ is the GCD. Return $a$.</li>
+                </ol>
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <h5 class="card-title text-success">Pseudocode</h5>
+                        <pre class="bg-light p-3 rounded code-block"><code>FUNCTION GCD(a, b):
+    WHILE b IS NOT 0:
+        remainder = a MOD b
+        a = b
+        b = remainder
+    RETURN a</code></pre>
+                    </div>
+                    <div class="col-md-6">
+                        <h5 class="card-title text-success">Python Sample Code</h5>
+                        <pre class="bg-light p-3 rounded code-block"><code>def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+# Example:
+print(f"GCD of 54 and 24: {gcd(54, 24)}")
+# Output: GCD of 54 and 24: 6</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-4 shadow-lg border-0 algorithm-card">
+            <div class="card-header bg-dark text-white fw-bold h4"><i class="fas fa-asterisk me-2"></i>9. Prime Number Check (Optimization)</div>
+            <div class="card-body">
+                <h5 class="card-title text-success">Description</h5>
+                <p>Determines if a given positive integer $n$ is a prime number. A prime number is greater than 1 and has no positive divisors other than 1 and itself. The optimization limits checking divisors up to $\sqrt{n}$.</p>
+                <h5 class="card-title text-success mt-3">Step-by-step Algorithm</h5>
+                <ol class="list-group list-group-numbered">
+                    <li class="list-group-item">If $n \le 1$, return False.</li>
+                    <li class="list-group-item">If $n \le 3$, return True.</li>
+                    <li class="list-group-item">If $n$ is divisible by 2 or 3, return False.</li>
+                    <li class="list-group-item">Iterate from $i = 5$ to $\lfloor \sqrt{n} \rfloor$ (incrementing by 6).</li>
+                    <li class="list-group-item">If $n$ is divisible by $i$ or $i+2$, return False.</li>
+                    <li class="list-group-item">If the loop completes, return True.</li>
+                </ol>
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <h5 class="card-title text-success">Pseudocode</h5>
+                        <pre class="bg-light p-3 rounded code-block"><code>FUNCTION isPrime(n):
+    IF n <= 1: RETURN False
+    IF n <= 3: RETURN True
+    IF n MOD 2 = 0 OR n MOD 3 = 0: RETURN False
+    i = 5
+    WHILE i * i <= n:
+        IF n MOD i = 0 OR n MOD (i + 2) = 0:
+            RETURN False
+        i = i + 6
+    RETURN True</code></pre>
+                    </div>
+                    <div class="col-md-6">
+                        <h5 class="card-title text-success">Python Sample Code</h5>
+                        <pre class="bg-light p-3 rounded code-block"><code>import math
+def is_prime(n):
+    if n <= 1: return False
+    if n <= 3: return True
+    if n % 2 == 0 or n % 3 == 0: return False
+    
+    i = 5
+    while i * i <= n:
+        if n % i == 0 or n % (i + 2) == 0:
+            return False
+        i += 6
+    return True
+
+# Example:
+print(f"Is 29 prime? {is_prime(29)}") 
+# Output: Is 29 prime? True</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-4 shadow-lg border-0 algorithm-card">
+            <div class="card-header bg-dark text-white fw-bold h4"><i class="fas fa-plus me-2"></i>10. Sum of Array Elements</div>
+            <div class="card-body">
+                <h5 class="card-title text-success">Description</h5>
+                <p>Calculates the sum of all elements within an array or list using a simple iterative loop. This is a fundamental traversal algorithm.</p>
+                <h5 class="card-title text-success mt-3">Step-by-step Algorithm</h5>
+                <ol class="list-group list-group-numbered">
+                    <li class="list-group-item">Initialize a $sum$ variable to $0$.</li>
+                    <li class="list-group-item">Iterate through each $element$ in the Array.</li>
+                    <li class="list-group-item">Update $sum = sum + element$.</li>
+                    <li class="list-group-item">After iterating through all elements, return $sum$.</li>
+                </ol>
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <h5 class="card-title text-success">Pseudocode</h5>
+                        <pre class="bg-light p-3 rounded code-block"><code>FUNCTION SumArray(Array):
+    sum = 0
+    FOR element IN Array:
+        sum = sum + element
+    RETURN sum</code></pre>
+                    </div>
+                    <div class="col-md-6">
+                        <h5 class="card-title text-success">Python Sample Code</h5>
+                        <pre class="bg-light p-3 rounded code-block"><code>def sum_array(arr):
+    total = 0
+    for element in arr:
+        total += element
+    return total
+
+# Example:
+data = [1, 2, 3, 4, 5]
+print(f"Sum of array: {sum_array(data)}")
+# Output: Sum of array: 15</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="bg-dark text-white pt-4 pb-2 mt-5 border-top border-primary">
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2025 DS Navigator. All Rights Reserved. | Designed for School Requirement.</p>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

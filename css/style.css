@@ -1,0 +1,88 @@
+/* --- Imports and Reset --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa; /* Light background */
+}
+
+/* --- Utility Classes --- */
+.text-primary { color: #007bff !important; }
+.text-success { color: #28a745 !important; }
+.text-warning { color: #ffc107 !important; }
+
+/* --- Navbar Customization --- */
+.navbar-brand {
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+}
+.nav-link {
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+.nav-link:hover {
+    color: #007bff !important; /* Highlight on hover */
+}
+.nav-link.active {
+    color: #007bff !important;
+    border-bottom: 2px solid #007bff;
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    /* Placeholder background image - find a good code/data structures background */
+    background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('https://picsum.photos/1600/600/?blur=5&random=1') no-repeat center center/cover;
+    height: 65vh;
+    border-radius: 0 0 15px 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+.hero-section h1 {
+    font-size: 3.8rem;
+    font-weight: 700;
+}
+
+/* --- Feature Cards & Hover Effects --- */
+.feature-card {
+    border: 1px solid #e9ecef;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative; 
+    cursor: pointer;
+}
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 123, 255, 0.25) !important;
+}
+
+/* --- Code Blocks & Algorithm Cards --- */
+pre.code-block {
+    background-color: #e9ecef !important;
+    border: 1px solid #ddd;
+    border-left: 5px solid #007bff;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-size: 0.9rem;
+    padding: 1rem;
+    line-height: 1.4;
+}
+.algorithm-card .card-header {
+    background-color: #343a40 !important;
+    border-radius: 0 !important;
+}
+
+/* --- Animation Classes (Bootstrap 5 does not include Animate.css, use custom or link external) --- */
+/* Custom Pulse Animation */
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.4); }
+    70% { box-shadow: 0 0 0 15px rgba(0, 123, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(0, 123, 255, 0); }
+}
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+/* For better responsiveness */
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+}

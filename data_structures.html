@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Data Structures</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary" href="index.html">
+                <i class="fas fa-cubes me-2"></i>DS Navigator
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="algorithms.html">Algorithms</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pseudocode.html">Pseudocode</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="data_structures.html">Python DS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <main class="container py-5">
+        <h1 class="text-center mb-5 display-4 fw-bold text-primary">Python Data Structures Implementation</h1>
+        <p class="text-center lead mb-5">Click on the sections below to view the Python code, simple explanation, and output examples for each fundamental Data Structure.</p>
+
+        <div class="accordion" id="dsAccordion">
+
+            <div class="accordion-item shadow-sm mb-3">
+                <h2 class="accordion-header">
+                    <button class="accordion-button bg-light fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseArray" aria-expanded="true">
+                        <i class="fas fa-grip-vertical me-2 text-warning"></i>1. Array (List) Operations: Insert, Delete, Traverse
+                    </button>
+                </h2>
+                <div id="collapseArray" class="accordion-collapse collapse show" data-bs-parent="#dsAccordion">
+                    <div class="accordion-body">
+                        <h5 class="text-success">Explanation</h5>
+                        <p>In Python, the built-in <code>list</code> type acts as a dynamic array. The core operations are implemented using basic list methods (like <code>.insert()</code> and <code>.pop()</code>) wrapped in a class for structure. Traversal simply involves iterating through all elements.</p>
+                        <h5 class="text-success mt-3">Python Code (`python_scripts/array.py`)</h5>
+                        <pre class="bg-light p-3 rounded code-block"><code>class ArrayOperations:
+    def __init__(self, initial_list=None):
+        self.array = initial_list if initial_list is not None else []
+        # Output: Initial Array: [10, 20, 30, 40]
+
+    def insert_element(self, index, value):
+        self.array.insert(index, value)
+
+    def delete_element(self, index):
+        self.array.pop(index)
+
+    def traverse(self):
+        return self.array
+
+# Example Usage:
+arr_ops = ArrayOperations([10, 20, 30, 40])
+arr_ops.insert_element(2, 50)  # Insert 50 at index 2
+arr_ops.delete_element(3)     # Delete element at index 3 (was 30)
+current_array = arr_ops.traverse()</code></pre>
+                        <h5 class="text-success mt-3">Output Example</h5>
+                        <pre class="bg-dark text-white p-3 rounded">
+Initial Array: [10, 20, 30, 40]
+Array after inserting 50 at index 2: [10, 20, 50, 30, 40]
+Array after deleting element at index 3: [10, 20, 50, 40]
+</pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item shadow-sm mb-3">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed bg-light fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseStack">
+                        <i class="fas fa-layer-group me-2 text-info"></i>2. Stacks (LIFO): Infix to Postfix/Prefix & Evaluation
+                    </button>
+                </h2>
+                <div id="collapseStack" class="accordion-collapse collapse" data-bs-parent="#dsAccordion">
+                    <div class="accordion-body">
+                        <h5 class="text-success">Explanation</h5>
+                        <p>A Stack is a LIFO (Last-In, First-Out) structure. We use the **shunting-yard algorithm** principle with stacks to convert human-readable Infix expressions into Postfix (Reverse Polish Notation) or Prefix, which are easier for computers to evaluate. </p>
+                        <h5 class="text-success mt-3">Python Code (`python_scripts/stack.py`)</h5>
+                        <pre class="bg-light p-3 rounded code-block"><code># Partial Stack Implementation for Conversion (Full code in stack.py)
+
+class Stack:
+    def __init__(self): self.items = []
+    def push(self, item): self.items.append(item)
+    def pop(self): return self.items.pop()
+
+def infix_to_postfix(expression):
+    # Implementation uses Stack, Precedence rules, and iteration.
+    pass 
+
+def evaluate_postfix(expression):
+    # Implementation uses Stack to perform operations on operands.
+    pass
+
+# Example Usage:
+infix = "(A+B)*(C-D)"
+postfix = "A B + C D - *"
+evaluation = evaluate_postfix("2 3 * 5 +") 
+</code></pre>
+                        <h5 class="text-success mt-3">Output Example</h5>
+                        <pre class="bg-dark text-white p-3 rounded">
+Infix Expression: A + B * C
+Postfix Conversion: A B C * +
+Prefix Conversion: + A * B C
+Expression Evaluation of "2 3 * 5 +": 11
+</pre>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item shadow-sm mb-3">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed bg-light fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseQueue">
+                        <i class="fas fa-users me-2 text-danger"></i>3. Queues (FIFO): Enqueue, Dequeue, Display
+                    </button>
+                </h2>
+                <div id="collapseQueue" class="accordion-collapse collapse" data-bs-parent="#dsAccordion">
+                    <div class="accordion-body">
+                        <h5 class="text-success">Explanation</h5>
+                        <p>A Queue is a FIFO (First-In, First-Out) structure, like a line of people waiting. **Enqueue** adds an element to the rear, and **Dequeue** removes an element from the front. We use Python's `collections.deque` for an efficient implementation. </p>
+                        <h5 class="text-success mt-3">Python Code (`python_scripts/queue.py`)</h5>
+                        <pre class="bg-light p-3 rounded code-block"><code>from collections import deque
+
+class Queue:
+    def __init__(self):
+        self.items = deque()
+
+    def enqueue(self, item):
+        self.items.append(item) # Add to the rear
+
+    def dequeue(self):
+        if self.items:
+            return self.items.popleft() # Remove from the front
+        return "Queue is empty"
+    
+    def display(self):
+        return list(self.items)
+
+# Example Usage:
+q = Queue()
+q.enqueue(10)
+q.enqueue(20)
+q.dequeue() 
+current_queue = q.display()</code></pre>
+                        <h5 class="text-success mt-3">Output Example</h5>
+                        <pre class="bg-dark text-white p-3 rounded">
+Initial Queue: []
+After Enqueue (10, 20, 30): deque([10, 20, 30])
+After Dequeue (removes 10): 20
+Current Queue: [20, 30]
+</pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item shadow-sm mb-3">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed bg-light fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTree">
+                        <i class="fas fa-tree me-2 text-success"></i>4. Binary Trees: Inorder, Preorder, Postorder Traversals
+                    </button>
+                </h2>
+                <div id="collapseTree" class="accordion-collapse collapse" data-bs-parent="#dsAccordion">
+                    <div class="accordion-body">
+                        <h5 class="text-success">Explanation</h5>
+                        <p>A Binary Tree is a non-linear data structure where each node has at most two children (left and right). **Traversals** are the processes of visiting all nodes in a specific order: **Inorder** (Left-Root-Right), **Preorder** (Root-Left-Right), and **Postorder** (Left-Right-Root). 
+
+[Image of Binary Tree Traversal]
+</p>
+                        <h5 class="text-success mt-3">Python Code (`python_scripts/tree.py`)</h5>
+                        <pre class="bg-light p-3 rounded code-block"><code>class Node:
+    def __init__(self, key):
+        self.left = None
+        self.right = None
+        self.val = key
+
+class BinaryTree:
+    def inorder_traversal(self, root):
+        if root:
+            self.inorder_traversal(root.left)
+            print(root.val, end=" ")
+            self.inorder_traversal(root.right)
+    
+    def preorder_traversal(self, root):
+        # Root -> Left -> Right
+        pass 
+
+    def postorder_traversal(self, root):
+        # Left -> Right -> Root
+        pass
+
+# Example Usage:
+# Tree structure: 1(root) -> 2(L), 3(R) -> 4(LL), 5(LR)
+# tree = BinaryTree(...) </code></pre>
+                        <h5 class="text-success mt-3">Output Example</h5>
+                        <pre class="bg-dark text-white p-3 rounded">
+Given Tree Structure (Simplified):
+      1
+     / \
+    2   3
+   / \
+  4   5
+Inorder Traversal: 4 2 5 1 3
+Preorder Traversal: 1 2 4 5 3
+Postorder Traversal: 4 5 2 3 1
+</pre>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white pt-4 pb-2 mt-5 border-top border-primary">
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2025 DS Navigator. All Rights Reserved. | Designed for School Requirement.</p>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
