@@ -3,9 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Algorithms & Pseudocode</title>
+    <title>Algorithms & Pseudocode - DS Navigator</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"></script>
+    
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -41,7 +45,7 @@
 
     <main class="container py-5">
         <h1 class="text-center mb-5 display-4 fw-bold text-primary">10 Core Algorithms & Pseudocode</h1>
-        <p class="text-center lead mb-5">Each card contains the formal algorithm steps, language-agnostic pseudocode, and a working Python implementation.</p>
+        <p class="text-center lead mb-5">Each card contains the formal algorithm steps, language-agnostic pseudocode, and a working Python implementation you can run directly in your browser.</p>
 
         <div class="card mb-4 shadow-lg border-0 algorithm-card">
             <div class="card-header bg-dark text-white fw-bold h4">
@@ -71,7 +75,7 @@
                     </div>
                     <div class="col-md-6">
                         <h5 class="card-title text-success">Python Sample Code</h5>
-                        <pre class="bg-light p-3 rounded code-block"><code>def linear_search(arr, target):
+                        <pre class="bg-light p-3 rounded code-block"><code id="code1">def linear_search(arr, target):
     for i in range(len(arr)):
         if arr[i] == target:
             return i
@@ -81,6 +85,9 @@
 data = [10, 5, 8, 12, 3]
 print(f"Index of 8: {linear_search(data, 8)}") 
 # Output: Index of 8: 2</code></pre>
+                        <button class="btn btn-primary w-100 mt-2" onclick="runPython('code1')">
+                            <i class="fas fa-play me-2"></i>Run Code
+                        </button>
                     </div>
                 </div>
             </div>
@@ -92,10 +99,7 @@ print(f"Index of 8: {linear_search(data, 8)}")
             </div>
             <div class="card-body">
                 <h5 class="card-title text-success">Description</h5>
-                <p>An efficient search algorithm for **sorted** arrays. It repeatedly divides the search interval in half, eliminating half of the elements in each step (Divide and Conquer). 
-
-[Image of Binary Search Diagram]
-</p>
+                <p>An efficient search algorithm for **sorted** arrays. It repeatedly divides the search interval in half, eliminating half of the elements in each step (Divide and Conquer).</p>
                 
                 <h5 class="card-title text-success mt-3">Step-by-step Algorithm</h5>
                 <ol class="list-group list-group-numbered">
@@ -125,7 +129,7 @@ print(f"Index of 8: {linear_search(data, 8)}")
                     </div>
                     <div class="col-md-6">
                         <h5 class="card-title text-success">Python Sample Code</h5>
-                        <pre class="bg-light p-3 rounded code-block"><code>def binary_search(arr, target):
+                        <pre class="bg-light p-3 rounded code-block"><code id="code2">def binary_search(arr, target):
     low, high = 0, len(arr) - 1
     while low <= high:
         mid = (low + high) // 2
@@ -141,6 +145,9 @@ print(f"Index of 8: {linear_search(data, 8)}")
 data = [3, 5, 8, 10, 12]
 print(f"Index of 10: {binary_search(data, 10)}") 
 # Output: Index of 10: 3</code></pre>
+                        <button class="btn btn-primary w-100 mt-2" onclick="runPython('code2')">
+                            <i class="fas fa-play me-2"></i>Run Code
+                        </button>
                     </div>
                 </div>
             </div>
@@ -171,7 +178,7 @@ print(f"Index of 10: {binary_search(data, 10)}")
                     </div>
                     <div class="col-md-6">
                         <h5 class="card-title text-success">Python Sample Code</h5>
-                        <pre class="bg-light p-3 rounded code-block"><code>def bubble_sort(arr):
+                        <pre class="bg-light p-3 rounded code-block"><code id="code3">def bubble_sort(arr):
     n = len(arr)
     for i in range(n):
         for j in range(0, n - i - 1):
@@ -183,6 +190,9 @@ data = [64, 34, 25, 12, 22]
 bubble_sort(data)
 print(f"Sorted array: {data}")
 # Output: Sorted array: [12, 22, 25, 34, 64]</code></pre>
+                        <button class="btn btn-primary w-100 mt-2" onclick="runPython('code3')">
+                            <i class="fas fa-play me-2"></i>Run Code
+                        </button>
                     </div>
                 </div>
             </div>
@@ -215,7 +225,7 @@ print(f"Sorted array: {data}")
                     </div>
                     <div class="col-md-6">
                         <h5 class="card-title text-success">Python Sample Code</h5>
-                        <pre class="bg-light p-3 rounded code-block"><code>def selection_sort(arr):
+                        <pre class="bg-light p-3 rounded code-block"><code id="code4">def selection_sort(arr):
     n = len(arr)
     for i in range(n - 1):
         min_idx = i
@@ -229,6 +239,9 @@ data = [64, 25, 12, 22, 11]
 selection_sort(data)
 print(f"Sorted array: {data}")
 # Output: Sorted array: [11, 12, 22, 25, 64]</code></pre>
+                        <button class="btn btn-primary w-100 mt-2" onclick="runPython('code4')">
+                            <i class="fas fa-play me-2"></i>Run Code
+                        </button>
                     </div>
                 </div>
             </div>
@@ -262,7 +275,7 @@ print(f"Sorted array: {data}")
                     </div>
                     <div class="col-md-6">
                         <h5 class="card-title text-success">Python Sample Code</h5>
-                        <pre class="bg-light p-3 rounded code-block"><code>def insertion_sort(arr):
+                        <pre class="bg-light p-3 rounded code-block"><code id="code5">def insertion_sort(arr):
     for i in range(1, len(arr)):
         key = arr[i]
         j = i - 1
@@ -276,6 +289,9 @@ data = [12, 11, 13, 5, 6]
 insertion_sort(data)
 print(f"Sorted array: {data}")
 # Output: Sorted array: [5, 6, 11, 12, 13]</code></pre>
+                        <button class="btn btn-primary w-100 mt-2" onclick="runPython('code5')">
+                            <i class="fas fa-play me-2"></i>Run Code
+                        </button>
                     </div>
                 </div>
             </div>
@@ -307,7 +323,7 @@ print(f"Sorted array: {data}")
                     </div>
                     <div class="col-md-6">
                         <h5 class="card-title text-success">Python Sample Code</h5>
-                        <pre class="bg-light p-3 rounded code-block"><code>def iterative_factorial(n):
+                        <pre class="bg-light p-3 rounded code-block"><code id="code6">def iterative_factorial(n):
     if n < 0: return "Error"
     if n == 0: return 1
     result = 1
@@ -318,6 +334,9 @@ print(f"Sorted array: {data}")
 # Example:
 print(f"Factorial of 5: {iterative_factorial(5)}")
 # Output: Factorial of 5: 120 (5*4*3*2*1)</code></pre>
+                        <button class="btn btn-primary w-100 mt-2" onclick="runPython('code6')">
+                            <i class="fas fa-play me-2"></i>Run Code
+                        </button>
                     </div>
                 </div>
             </div>
@@ -347,7 +366,7 @@ print(f"Factorial of 5: {iterative_factorial(5)}")
                     </div>
                     <div class="col-md-6">
                         <h5 class="card-title text-success">Python Sample Code</h5>
-                        <pre class="bg-light p-3 rounded code-block"><code>def recursive_fib(n):
+                        <pre class="bg-light p-3 rounded code-block"><code id="code7">def recursive_fib(n):
     if n <= 0: return 0
     if n == 1: return 1
     return recursive_fib(n - 1) + recursive_fib(n - 2)
@@ -355,6 +374,9 @@ print(f"Factorial of 5: {iterative_factorial(5)}")
 # Example:
 print(f"Fibonacci of 6: {recursive_fib(6)}") 
 # Output: Fibonacci of 6: 8 (0, 1, 1, 2, 3, 5, 8)</code></pre>
+                        <button class="btn btn-primary w-100 mt-2" onclick="runPython('code7')">
+                            <i class="fas fa-play me-2"></i>Run Code
+                        </button>
                     </div>
                 </div>
             </div>
@@ -386,7 +408,7 @@ print(f"Fibonacci of 6: {recursive_fib(6)}")
                     </div>
                     <div class="col-md-6">
                         <h5 class="card-title text-success">Python Sample Code</h5>
-                        <pre class="bg-light p-3 rounded code-block"><code>def gcd(a, b):
+                        <pre class="bg-light p-3 rounded code-block"><code id="code8">def gcd(a, b):
     while b:
         a, b = b, a % b
     return a
@@ -394,6 +416,9 @@ print(f"Fibonacci of 6: {recursive_fib(6)}")
 # Example:
 print(f"GCD of 54 and 24: {gcd(54, 24)}")
 # Output: GCD of 54 and 24: 6</code></pre>
+                        <button class="btn btn-primary w-100 mt-2" onclick="runPython('code8')">
+                            <i class="fas fa-play me-2"></i>Run Code
+                        </button>
                     </div>
                 </div>
             </div>
@@ -429,7 +454,7 @@ print(f"GCD of 54 and 24: {gcd(54, 24)}")
                     </div>
                     <div class="col-md-6">
                         <h5 class="card-title text-success">Python Sample Code</h5>
-                        <pre class="bg-light p-3 rounded code-block"><code>import math
+                        <pre class="bg-light p-3 rounded code-block"><code id="code9">import math
 def is_prime(n):
     if n <= 1: return False
     if n <= 3: return True
@@ -445,6 +470,9 @@ def is_prime(n):
 # Example:
 print(f"Is 29 prime? {is_prime(29)}") 
 # Output: Is 29 prime? True</code></pre>
+                        <button class="btn btn-primary w-100 mt-2" onclick="runPython('code9')">
+                            <i class="fas fa-play me-2"></i>Run Code
+                        </button>
                     </div>
                 </div>
             </div>
@@ -473,7 +501,7 @@ print(f"Is 29 prime? {is_prime(29)}")
                     </div>
                     <div class="col-md-6">
                         <h5 class="card-title text-success">Python Sample Code</h5>
-                        <pre class="bg-light p-3 rounded code-block"><code>def sum_array(arr):
+                        <pre class="bg-light p-3 rounded code-block"><code id="code10">def sum_array(arr):
     total = 0
     for element in arr:
         total += element
@@ -483,12 +511,35 @@ print(f"Is 29 prime? {is_prime(29)}")
 data = [1, 2, 3, 4, 5]
 print(f"Sum of array: {sum_array(data)}")
 # Output: Sum of array: 15</code></pre>
+                        <button class="btn btn-primary w-100 mt-2" onclick="runPython('code10')">
+                            <i class="fas fa-play me-2"></i>Run Code
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
 
     </main>
+
+    <div class="modal fade" id="outputModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content bg-dark text-white border-primary">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title font-monospace">
+                        <i class="fas fa-terminal me-2 text-success"></i>Terminal Output
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <pre id="consoleOutput" class="m-0 p-3 text-success font-monospace" style="min-height: 200px; font-size: 1.1rem;"></pre>
+                </div>
+                <div class="modal-footer border-secondary">
+                    <small class="text-muted me-auto">Powered by Skulpt</small>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <footer class="bg-dark text-white pt-4 pb-2 mt-5 border-top border-primary">
         <div class="container text-center">
